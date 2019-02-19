@@ -9,12 +9,19 @@ class Db {
     //private $dbuser = 'root';
     //private $dbpass = '';
     //private $dbname = 'social-net';
-    private $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    private $url;
+    private $dbhost;
+    private $dbuser;
+    private $dbpass;
+    private $dbname;
 
-    private $dbhost = $url["host"];
-    private $dbuser = $url["user"];
-    private $dbpass = $url["pass"];
-    private $dbname = substr($url["path"], 1);
+    public function __construct() {
+        $this->url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+        $this->dbhost = $url["host"];
+        $this->dbuser = $url["user"];
+        $this->dbpass = $url["pass"];
+        $this->dbname = substr($url["path"], 1);
+    }
 
     public function connect() {
         $connect_string = "mysql:host=$this->dbhost;dbname=$this->dbname;";
