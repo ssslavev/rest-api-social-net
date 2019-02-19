@@ -53,6 +53,11 @@ $app->get('/api/users/{id}/friends/all-requests', '\FriendReqController:getAllRe
 $app->post('/api/users/friends/requests', '\FriendReqController:deleteRequest');
 
 
+$app->get('/', function ($request, $response) {
+    return $response->write('test');
+});
+
+
 
 $container = $app->getContainer();
 
