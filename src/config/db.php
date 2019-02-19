@@ -9,19 +9,13 @@ class Db {
     //private $dbuser = 'root';
     //private $dbpass = '';
     //private $dbname = 'social-net';
-    private $url;
-    private $dbhost;
-    private $dbuser;
-    private $dbpass;
-    private $dbname;
 
+    private $dbhost = 'us-cdbr-iron-east-03.cleardb.net';
+    private $dbuser = 'bcd26e9ebf14f2';
+    private $dbpass = '4d91b0d1';
+    private $dbname = 'heroku_9b7e2f5e0a290ef';
 
     public function connect() {
-        $this->url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-        $this->dbhost = $url["host"];
-        $this->dbuser = $url["user"];
-        $this->dbpass = $url["pass"];
-        $this->dbname = substr($url["path"], 1);
         $connect_string = "mysql:host=$this->dbhost;dbname=$this->dbname;";
 
         $dbConnection = new PDO($connect_string, $this->dbuser, $this->dbpass);
