@@ -15,15 +15,13 @@ class Db {
     private $dbpass;
     private $dbname;
 
-    public function __construct() {
+
+    public function connect() {
         $this->url = parse_url(getenv("CLEARDB_DATABASE_URL"));
         $this->dbhost = $url["host"];
         $this->dbuser = $url["user"];
         $this->dbpass = $url["pass"];
         $this->dbname = substr($url["path"], 1);
-    }
-
-    public function connect() {
         $connect_string = "mysql:host=$this->dbhost;dbname=$this->dbname;";
 
         $dbConnection = new PDO($connect_string, $this->dbuser, $this->dbpass);
