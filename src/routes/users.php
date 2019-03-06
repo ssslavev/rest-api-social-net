@@ -30,7 +30,7 @@ $app->add(new Tuupola\Middleware\JwtAuthentication([
                 "/api/users/{id}/friends/all-requests",
                 "/api/users/friends/requests",
                 "/",
-                'api/users/friends']
+                '/api/users/friends']
 ]));
 
 
