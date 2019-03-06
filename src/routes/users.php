@@ -29,8 +29,7 @@ $app->add(new Tuupola\Middleware\JwtAuthentication([
                 "/api/images",
                 "/api/users/{id}/friends/all-requests",
                 "/api/users/friends/requests",
-                "/",
-                '/api/users/friends']
+                "/"]
 ]));
 
 
