@@ -53,7 +53,7 @@ $app->post('/api/users/{id}/pictures', '\ImagesController:uploadImage' );
 $app->get('/api/users/{id}/images', '\ImagesController:getImagesByuserId');
 $app->get('/api/users/{id}/friends/all-requests', '\FriendReqController:getAllRequests');
 $app->post('/api/users/friends/requests', '\FriendReqController:deleteRequest');
-$app->post('api/users/friends', '\FriendReqController:getFriends');
+$app->post('/api/users/friends', '\FriendReqController:getFriends');
 
 $app->get('/', function ($request, $response) {
     return $response->write('test');
