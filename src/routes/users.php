@@ -29,6 +29,7 @@ $app->add(new Tuupola\Middleware\JwtAuthentication([
                 "/api/images",
                 "/api/users/{id}/friends/all-requests",
                 "/api/users/friends/requests",
+                "/api/users/friendsList",
                 "/"]
 ]));
 
@@ -52,6 +53,8 @@ $app->post('/api/users/{id}/pictures', '\ImagesController:uploadImage' );
 $app->get('/api/users/{id}/images', '\ImagesController:getImagesByuserId');
 $app->get('/api/users/{id}/friends/all-requests', '\FriendReqController:getAllRequests');
 $app->post('/api/users/friends/requests', '\FriendReqController:deleteRequest');
+$app->post('/api/users/friendsList', '\FriendReqController:getFriendsList');
+
 
 
 $app->get('/', function ($request, $response) {

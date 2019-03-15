@@ -90,4 +90,16 @@ class FriendReqController {
 
     }
 
+    public function getFriendsList(Request $request, Response $response, array $args) {
+        
+        $loggedUserId =  intval($request->getParam('loggedUserId'));
+
+        $friendReqData = new FriendReqData();
+
+        $friendsList = $friendReqData->getFriendsList($loggedUserId)
+
+        return $response->withJson($friendsList); 
+
+    }
+
 }

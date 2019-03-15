@@ -113,6 +113,27 @@ class FriendReqData {
 
     }
 
+    public function getFriendsList($loggedUserId) {
+        $sql = "SELECT user_one AS friendlist FROM friends WHERE user_one NOT IN (:user_one) UNION
+        SELECT user_two FROM friends WHERE user_two NOT IN (:user_one);"
+
+        try {
+            $db = new Db();
+            $db = $db->connect();
+
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':user_one', $loggedUserId);
+            $stmt->execute();
+
+            $friends =  $stmt->fetchAll(PDO::FETCH_OBJ);
+            
+            return $friends;
+                
+        } catch(PDOException $e) {
+            echo $e->getMessage();
+        }
+            }
+
     public function getAllRequests($loggedUserId) {
         $sql = "SELECT friend_req_id, from_user, from_name  FROM friendreq  WHERE  to_user=:to_user";
 
