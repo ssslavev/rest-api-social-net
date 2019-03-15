@@ -96,7 +96,7 @@ class FriendReqController {
 
         $friendReqData = new FriendReqData();
 
-        $friendsList = $friendReqData->getFriendsList($loggedUserId)
+        $friendsList = $friendReqData->getFriendsList($loggedUserId);
 
         return $response->withJson($friendsList); 
 
