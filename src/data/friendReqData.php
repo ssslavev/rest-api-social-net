@@ -115,7 +115,7 @@ class FriendReqData {
 
     public function getFriendsList($loggedUserId) {
         $sql = "SELECT user_one AS friendlist FROM friends WHERE user_one NOT IN (:user_one) UNION
-        SELECT user_two FROM friends WHERE user_two NOT IN (:user_one);"
+        SELECT user_two FROM friends WHERE user_two NOT IN (:user_one)";
 
         try {
             $db = new Db();
