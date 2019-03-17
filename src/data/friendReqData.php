@@ -69,15 +69,15 @@ class FriendReqData {
 
     public function acceptReq($loggedUserId, $id) {
 
-        $sql = "INSERT  INTO friends (user_one, user_two) VALUES (:user_one, :user_two)";
+        $sql = "INSERT  INTO friends (user_id, friend_id) VALUES (:user_id, :friend_id)";
 
         try {
             $db = new Db();
             $db = $db->connect();
     
             $stmt = $db->prepare($sql);
-            $stmt->bindParam(':user_one', $loggedUserId);
-            $stmt->bindParam(':user_two', $id);
+            $stmt->bindParam(':user_id', $loggedUserId);
+            $stmt->bindParam(':friend_id', $id);
             $stmt->execute();
 
 
