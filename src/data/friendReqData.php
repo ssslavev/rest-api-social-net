@@ -114,15 +114,16 @@ class FriendReqData {
     }
 
     public function getFriendsList($loggedUserId) {
-        $sql = "SELECT user_one AS friendlist FROM friends WHERE user_one NOT IN (:user_one) UNION
-        SELECT user_two FROM friends WHERE user_two NOT IN (:user_one)";
+        $sql = "SELECT name  FROM users u
+        JOIN friends f ON u.user_id = f.friend_id
+         WHERE f.user_id =:current_user ";
 
         try {
             $db = new Db();
             $db = $db->connect();
 
             $stmt = $db->prepare($sql);
-            $stmt->bindParam(':user_one', $loggedUserId);
+            $stmt->bindParam(':current_user', $loggedUserId);
             $stmt->execute();
 
             $friends =  $stmt->fetchAll(PDO::FETCH_OBJ);
