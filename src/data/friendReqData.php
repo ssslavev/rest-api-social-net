@@ -91,8 +91,8 @@ class FriendReqData {
 
     public function getFriends($loggedUserId, $id) {
 
-        $sql = "SELECT friends_id  FROM friends  WHERE user_one =:user_one AND user_two=:user_two
-                OR user_one = :user_two AND user_two = :user_one";
+        $sql = "SELECT friends_id  FROM friends  WHERE user_id =:user_one AND friend_id=:user_two
+                OR friend_id = :user_two AND user_id = :user_one";
 
         try {
             $db = new Db();
