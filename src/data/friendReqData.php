@@ -114,9 +114,10 @@ class FriendReqData {
     }
 
     public function getFriendsList($loggedUserId) {
-        $sql = "SELECT name  FROM users u
-        JOIN friends f ON u.user_id = f.friend_id
-         WHERE f.user_id =:current_user OR f.friend_id =:current_user ";
+        $sql = "SELECT name FROM users u
+        JOIN friends f
+        ON u.user_id = f.friend_id
+        WHERE f.user_id =:current_user";
 
         try {
             $db = new Db();
