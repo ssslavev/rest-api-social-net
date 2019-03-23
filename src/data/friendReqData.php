@@ -114,13 +114,17 @@ class FriendReqData {
     }
 
     public function getFriendsList($loggedUserId) {
-        $sql = "SELECT user_id
+        $sql = "SELECT * FROM users u 
+        LEFT JOIN 
+        (
+        SELECT user_id
         FROM friends 
         WHERE friend_id =:current_user
-        UNION
+        UNION 
         SELECT friend_id
         FROM friends 
-        WHERE user_id =:current_user";
+        WHERE user_id =:current_user) AS USER ON u.user_id = USER.user_id
+        WHERE USER.user_id IS NOT NULL";
 
         try {
             $db = new Db();
