@@ -120,7 +120,7 @@ class FriendReqData {
         UNION
         SELECT f.friend_id
         FROM friends f
-        WHERE f.user_id = :current_user;
+        WHERE f.user_id = :current_user"
 
         try {
             $db = new Db();
