@@ -16,7 +16,9 @@ $app = new \Slim\App($container);
 $app->add(new Tuupola\Middleware\JwtAuthentication([
     "secure" => false,
     "secret" => "supersecretkeyyoushouldnotcommittogithub",
-    "path"=> "/"
+    "path"=> "/",
+    "ignore"=>["/api/users/login",
+                "/api/users/register"]
 ]));
 
 
