@@ -7,7 +7,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../vendor/autoload.php';
 require '../src/config/db.php';
-require '../src/routes/users.php';
+require '../src/routes/routes.php';
 
 
 

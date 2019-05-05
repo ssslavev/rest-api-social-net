@@ -1,8 +1,7 @@
 <?php 
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
 
-require_once '../src/controllers/auth.php';
+
+require_once '../src/controllers/authController.php';
 require_once '../src/controllers/usersController.php';
 require_once '../src/controllers/postsController.php';
 require_once '../src/controllers/friendReqController.php';
@@ -17,20 +16,7 @@ $app = new \Slim\App($container);
 $app->add(new Tuupola\Middleware\JwtAuthentication([
     "secure" => false,
     "secret" => "supersecretkeyyoushouldnotcommittogithub",
-    "path"=> "/",
-    "ignore"=>["/api/users/login",
-                "/api/users",
-                "/api/users/register",
-                "/api/posts",
-                "/api/users/posts/{id}" ,
-                "api/users/friends/request",
-                "api/users/friends/acceptReq",
-                "api/users/{id}/pictures",
-                "/api/images",
-                "/api/users/{id}/friends/all-requests",
-                "/api/users/friends/requests",
-                "/api/users/friendsList",
-                "/"]
+    "path"=> "/"
 ]));
 
 
@@ -57,36 +43,28 @@ $app->post('/api/users/friendsList', '\FriendReqController:getFriendsList');
 
 
 
-$app->get('/', function ($request, $response) {
-    return $response->write('test');
-});
-
-
-
-$container = $app->getContainer();
-
 $container['upload_directory'] = __DIR__ . '/uploads';
 
 $container['AuthController'] = function() {
     return new AuthController();
 };
 
-$container = $app->getContainer();
+
 $container['UsersController'] = function() {
     return new UsersController();
 };
 
-$container = $app->getContainer();
+
 $container['postsController'] = function() {
     return new postsController();
 };
 
-$container = $app->getContainer();
+
 $container['friendReqController'] = function() {
     return new friendReqController();
 };
 
-$container = $app->getContainer();
+
 $container['imagesController'] = function() {
     return new ImagesController();
 };

@@ -4,7 +4,11 @@
         "tuupola/slim-jwt-auth": "^3.1"
     },
     "autoload": {
-        "psr-4": {"Routes\\Users\\": "src/routes/"},
-        "files": ["src/routes/users.php"]
+        "psr-4": {
+            "Routes\\Users\\": "src/routes/"
+        },
+        "files": [
+            "src/routes/routes.php"
+        ]
     }
 }
