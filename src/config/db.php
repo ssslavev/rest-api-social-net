@@ -1,10 +1,11 @@
 <?php
-header ("Access-Control-Allow-Origin: *");
-header ("Access-Control-Expose-Headers: Content-Length, X-JSON");
-header ("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
-header ("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Expose-Headers: Content-Length, X-JSON");
+header("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: *");
 
-class Db {
+class Db
+{
     //private $dbhost = 'localhost';
     //private $dbuser = 'root';
     //private $dbpass = '';
@@ -15,7 +16,8 @@ class Db {
     private $dbpass = '4d91b0d1';
     private $dbname = 'heroku_9b7e2f5e0a290ef';
 
-    public function connect() {
+    public function connect()
+    {
         $connect_string = "mysql:host=$this->dbhost;dbname=$this->dbname;";
 
         $dbConnection = new PDO($connect_string, $this->dbuser, $this->dbpass);
@@ -24,7 +26,5 @@ class Db {
 
         return $dbConnection;
     }
-
-     
 
 }

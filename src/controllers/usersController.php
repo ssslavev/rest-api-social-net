@@ -1,25 +1,26 @@
 <?php
 
-use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
+use \Psr\Http\Message\ServerRequestInterface as Request;
 
 require '../src/data/usersData.php';
 
-class UsersController {
+class UsersController
+{
 
-    public function getAllUsers(Request $request, Response $response, array $args) {
+    public function getAllUsers(Request $request, Response $response, array $args)
+    {
 
         $usersData = new UsersData();
-        $users =  $usersData->getAll();
-
-        
+        $users = $usersData->getAll();
 
         $newResponse = $response->withJson($users);
         return $newResponse;
     }
 
-    public function getUser(Request $request, Response $response, array $args) {
-        
+    public function getUser(Request $request, Response $response, array $args)
+    {
+
         $id = $request->getAttribute('id');
 
         $usersData = new UsersData();
@@ -30,7 +31,8 @@ class UsersController {
 
     }
 
-    public function getUsersWithPosts(Request $request, Response $response, array $args) {
+    public function getUsersWithPosts(Request $request, Response $response, array $args)
+    {
 
         $usersData = new UsersData();
         $user = $usersData->getUsersWithPosts();
