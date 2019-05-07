@@ -16,12 +16,14 @@ class AuthController
         $firstName = $request->getParam('firstName');
         $lastName = $request->getParam('lastName');
         $email = $request->getParam('email');
+        $gender = $request->getParam('gender');
 
         $userToAdd = ['name' => $name,
             'password' => $password,
             'firstName' => $firstName,
             'lastName' => $lastName,
-            'email' => $email];
+            'email' => $email,
+            'gender' => $gender];
 
         $authData = new AuthData();
 

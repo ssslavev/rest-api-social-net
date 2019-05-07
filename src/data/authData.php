@@ -10,7 +10,7 @@ class AuthData
         $usersData = new UsersData();
 
         list('name' => $name, 'password' => $password, 'firstName' => $firstName,
-            'lastName' => $lastName, 'email' => $email) = $userToAdd;
+            'lastName' => $lastName, 'email' => $email, 'gender' => $gender) = $userToAdd;
 
         $user = $usersData->getUserByName($name);
 
@@ -19,7 +19,7 @@ class AuthData
 
         }
 
-        $sql = "INSERT INTO Users (name, password, first_name, last_name, email) VALUES (:name, :password, :first_name, :last_name, :email)";
+        $sql = "INSERT INTO Users (name, password, first_name, last_name, email, gender) VALUES (:name, :password, :first_name, :last_name, :email, :gender)";
 
         try {
             $db = new Db();
@@ -31,6 +31,7 @@ class AuthData
             $stmt->bindParam(':first_name', $firstName);
             $stmt->bindParam(':last_name', $lastName);
             $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':gender', $gender);
 
             $stmt = $stmt->execute();
 
