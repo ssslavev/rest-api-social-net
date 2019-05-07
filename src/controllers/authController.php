@@ -30,7 +30,7 @@ class AuthController
             return $response->withjson($data);
         } catch (Exception $e) {
             $error = ["message" => $e->getMessage()];
-            return $response->withJson($error);
+            return $response->withJson($error)->withStatus(422);
         }
 
     }
