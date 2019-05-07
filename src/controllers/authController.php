@@ -52,6 +52,7 @@ class AuthController
             return $response->withJson([
                 "user" => $loggedUser,
                 "token" => $jwt,
+                "message" => "You are logged in!",
             ]);
         } else {
             return $response->withStatus(500);
